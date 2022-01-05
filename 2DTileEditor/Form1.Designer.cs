@@ -43,16 +43,16 @@ namespace _2DTileEditor
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(216, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(221, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(800, 410);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvasPaint);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainMenu,
             this.settingsMenu});
@@ -74,13 +74,13 @@ namespace _2DTileEditor
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(180, 22);
+            this.saveButton.Size = new System.Drawing.Size(133, 22);
             this.saveButton.Text = "Uložit";
             // 
             // importButton
             // 
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(180, 22);
+            this.importButton.Size = new System.Drawing.Size(133, 22);
             this.importButton.Text = "Importovat";
             // 
             // settingsMenu
@@ -96,12 +96,13 @@ namespace _2DTileEditor
             this.sizeChangeBtn.Name = "sizeChangeBtn";
             this.sizeChangeBtn.Size = new System.Drawing.Size(180, 22);
             this.sizeChangeBtn.Text = "Velikost plochy";
+            this.sizeChangeBtn.Click += new System.EventHandler(this.sizeChangeBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 482);
+            this.ClientSize = new System.Drawing.Size(1264, 522);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
