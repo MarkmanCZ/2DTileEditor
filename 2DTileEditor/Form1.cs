@@ -15,12 +15,16 @@ namespace _2DTileEditor
     {
 
         private int pocetCtvercu;
+        private int[,] grid = new int[0, 0];
+        private PictureBox pictureBox2;
+
 
         public Form1()
         {
             try
             {
                 pocetCtvercu = int.Parse(Interaction.InputBox("Pocet ctvercu: "));
+                grid = new int[pocetCtvercu, pocetCtvercu];
             }
             catch (FormatException e)
             {
@@ -68,12 +72,66 @@ namespace _2DTileEditor
             try
             {
                 pocetCtvercu = int.Parse(Interaction.InputBox("Pocet ctvercu: "));
+                grid = new int[pocetCtvercu, pocetCtvercu];
             }
             catch (FormatException ex)
             {
                 Console.WriteLine(ex);
             }
             Refresh();
+        }
+
+        private void grassBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            pictureBox2 = new PictureBox();
+            pictureBox2.Image = grassBox.Image;
+            pictureBox2.Width = 100;
+            pictureBox2.Height = 100;
+            Controls.Add(pictureBox2);
+            pictureBox2.BringToFront();
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (pictureBox2 != null)
+            {
+                Point p1 = MousePosition;
+                Point p2 = PointToClient(p1);
+                pictureBox2.Location = new Point(p2.X - pictureBox2.Width / 2, p2.Y +50);
+            }
+
+        }
+
+        private void roadBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            pictureBox2 = new PictureBox();
+            pictureBox2.Image = roadBox.Image;
+            pictureBox2.Width = 100;
+            pictureBox2.Height = 100;
+            Controls.Add(pictureBox2);
+            pictureBox2.BringToFront();
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (pictureBox2 == null)
+                return;
+            if (e.Button == MouseButtons.Right)
+            {
+                Controls.Remove(pictureBox2);
+                pictureBox2 = null;
+            }
+        }
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (pictureBox2 == null)
+                return;
+            if (e.Button == MouseButtons.Right)
+            {
+                Controls.Remove(pictureBox2);
+                pictureBox2 = null;
+            }
         }
     }
 }

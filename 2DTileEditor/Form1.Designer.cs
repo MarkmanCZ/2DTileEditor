@@ -55,6 +55,8 @@ namespace _2DTileEditor
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvasPaint);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // menuStrip1
             // 
@@ -113,6 +115,7 @@ namespace _2DTileEditor
             this.grassBox.Size = new System.Drawing.Size(100, 100);
             this.grassBox.TabIndex = 2;
             this.grassBox.TabStop = false;
+            this.grassBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grassBox_MouseClick);
             // 
             // roadBox
             // 
@@ -123,6 +126,7 @@ namespace _2DTileEditor
             this.roadBox.Size = new System.Drawing.Size(100, 100);
             this.roadBox.TabIndex = 3;
             this.roadBox.TabStop = false;
+            this.roadBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.roadBox_MouseClick);
             // 
             // Form1
             // 
@@ -139,6 +143,7 @@ namespace _2DTileEditor
             this.MaximizeBox = false;
             this.Name = this.Text;
             this.Text = "2D Tile Editor";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
