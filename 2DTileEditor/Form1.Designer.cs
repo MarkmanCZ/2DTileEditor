@@ -37,13 +37,19 @@ namespace _2DTileEditor
             this.importButton = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.sizeChangeBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.grassBox = new System.Windows.Forms.PictureBox();
+            this.roadBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grassBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roadBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(152, 36);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(700, 700);
+            this.pictureBox1.MinimumSize = new System.Drawing.Size(700, 700);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(700, 700);
             this.pictureBox1.TabIndex = 0;
@@ -98,11 +104,33 @@ namespace _2DTileEditor
             this.sizeChangeBtn.Text = "Velikost plochy";
             this.sizeChangeBtn.Click += new System.EventHandler(this.sizeChangeBtn_Click);
             // 
+            // grassBox
+            // 
+            this.grassBox.Location = new System.Drawing.Point(85, 755);
+            this.grassBox.MaximumSize = new System.Drawing.Size(100, 100);
+            this.grassBox.MinimumSize = new System.Drawing.Size(100, 100);
+            this.grassBox.Name = "grassBox";
+            this.grassBox.Size = new System.Drawing.Size(100, 100);
+            this.grassBox.TabIndex = 2;
+            this.grassBox.TabStop = false;
+            // 
+            // roadBox
+            // 
+            this.roadBox.Location = new System.Drawing.Point(191, 755);
+            this.roadBox.MaximumSize = new System.Drawing.Size(100, 100);
+            this.roadBox.MinimumSize = new System.Drawing.Size(100, 100);
+            this.roadBox.Name = "roadBox";
+            this.roadBox.Size = new System.Drawing.Size(100, 100);
+            this.roadBox.TabIndex = 3;
+            this.roadBox.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 837);
+            this.ClientSize = new System.Drawing.Size(1008, 867);
+            this.Controls.Add(this.roadBox);
+            this.Controls.Add(this.grassBox);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -114,6 +142,8 @@ namespace _2DTileEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grassBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roadBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +158,8 @@ namespace _2DTileEditor
         private System.Windows.Forms.ToolStripMenuItem importButton;
         private System.Windows.Forms.ToolStripMenuItem settingsMenu;
         private System.Windows.Forms.ToolStripMenuItem sizeChangeBtn;
+        private System.Windows.Forms.PictureBox grassBox;
+        private System.Windows.Forms.PictureBox roadBox;
     }
 }
 

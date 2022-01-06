@@ -14,13 +14,13 @@ namespace _2DTileEditor
     public partial class Form1 : Form
     {
 
-        private int pocetLinek;
+        private int pocetCtvercu;
 
         public Form1()
         {
             try
             {
-                pocetLinek = Convert.ToInt32(Interaction.InputBox("Pocet linek: "));
+                pocetCtvercu = int.Parse(Interaction.InputBox("Pocet ctvercu: "));
             }
             catch (FormatException e)
             {
@@ -35,36 +35,45 @@ namespace _2DTileEditor
             Pen myP = new Pen(Color.Black);
             float x = 0f;
             float y = 0f;
-            try
+            if(pocetCtvercu != 0)
             {
-                float xPlocha = (pictureBox1.Width / pocetLinek) - myP.Width;
-                float yPlocha = (pictureBox1.Height / pocetLinek) - myP.Width;
+                float xPlocha = (pictureBox1.Width / pocetCtvercu) - myP.Width;
+                float yPlocha = (pictureBox1.Height / pocetCtvercu) - myP.Width;
         
                 //vertikalne 
-                for (int i = 0; i < pocetLinek + 1; i++)
+                for (int i = 0; i < pocetCtvercu + 1; i++)
                 {
-                    g.DrawLine(myP, x, y, x, yPlocha * pocetLinek);
+                    g.DrawLine(myP, x, y, x, yPlocha * pocetCtvercu);
                     x += xPlocha;
                 }
                 //horizontalne
                 x = 0f;
-                for (int i = 0; i < pocetLinek + 1; i++)
+                for (int i = 0; i < pocetCtvercu + 1; i++)
                 {
-                    g.DrawLine(myP, x, y, xPlocha * pocetLinek, y);
-                    y += xPlocha;
+                    g.DrawLine(myP, x, y, xPlocha * pocetCtvercu, y);
+                    y += yPlocha;
                 }
 
             }
-            catch (DivideByZeroException ex)
-            {
-                Console.WriteLine(ex);
-                Application.Exit();
-            }
+
+            Image grass = Image.FromFile("grass20.png");
+            Image road = Image.FromFile("road.png");
+            grassBox.Image = grass;
+            roadBox.Image = road;
+
         }
 
         private void sizeChangeBtn_Click(object sender, EventArgs e)
         {
-            pocetLinek = Convert.ToInt32(Interaction.InputBox("Pocet linek: "));
+            try
+            {
+                pocetCtvercu = int.Parse(Interaction.InputBox("Pocet ctvercu: "));
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            Refresh();
         }
     }
 }
