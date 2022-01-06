@@ -14,13 +14,13 @@ namespace _2DTileEditor
     public partial class Form1 : Form
     {
 
-        private int numOfLines;
+        private int pocetLinek;
 
         public Form1()
         {
             try
             {
-                numOfLines = Convert.ToInt32(Interaction.InputBox("Pocet ctvercu: "));
+                pocetLinek = Convert.ToInt32(Interaction.InputBox("Pocet linek: "));
             }
             catch (FormatException e)
             {
@@ -37,20 +37,20 @@ namespace _2DTileEditor
             float y = 0f;
             try
             {
-                float xPlocha = (pictureBox1.Width / numOfLines) - myP.Width;
-                float yPlocha = (pictureBox1.Height / numOfLines) - myP.Width;
+                float xPlocha = (pictureBox1.Width / pocetLinek) - myP.Width;
+                float yPlocha = (pictureBox1.Height / pocetLinek) - myP.Width;
         
                 //vertikalne 
-                for (int i = 0; i < numOfLines + 1; i++)
+                for (int i = 0; i < pocetLinek + 1; i++)
                 {
-                    g.DrawLine(myP, x, y, x, yPlocha * numOfLines);
+                    g.DrawLine(myP, x, y, x, yPlocha * pocetLinek);
                     x += xPlocha;
                 }
                 //horizontalne
                 x = 0f;
-                for (int i = 0; i < numOfLines + 1; i++)
+                for (int i = 0; i < pocetLinek + 1; i++)
                 {
-                    g.DrawLine(myP, x, y, xPlocha * numOfLines, y);
+                    g.DrawLine(myP, x, y, xPlocha * pocetLinek, y);
                     y += xPlocha;
                 }
 
@@ -64,7 +64,7 @@ namespace _2DTileEditor
 
         private void sizeChangeBtn_Click(object sender, EventArgs e)
         {
-            numOfLines = Convert.ToInt32(Interaction.InputBox("Pocet ctvercu: "));
+            pocetLinek = Convert.ToInt32(Interaction.InputBox("Pocet linek: "));
         }
     }
 }
