@@ -43,9 +43,9 @@ namespace _2DTileEditor
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(221, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(152, 36);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 410);
+            this.pictureBox1.Size = new System.Drawing.Size(700, 700);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvasPaint);
@@ -58,7 +58,7 @@ namespace _2DTileEditor
             this.settingsMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +94,7 @@ namespace _2DTileEditor
             // sizeChangeBtn
             // 
             this.sizeChangeBtn.Name = "sizeChangeBtn";
-            this.sizeChangeBtn.Size = new System.Drawing.Size(180, 22);
+            this.sizeChangeBtn.Size = new System.Drawing.Size(153, 22);
             this.sizeChangeBtn.Text = "Velikost plochy";
             this.sizeChangeBtn.Click += new System.EventHandler(this.sizeChangeBtn_Click);
             // 
@@ -102,7 +102,7 @@ namespace _2DTileEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 522);
+            this.ClientSize = new System.Drawing.Size(1008, 837);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

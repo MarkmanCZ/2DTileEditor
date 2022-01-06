@@ -14,35 +14,57 @@ namespace _2DTileEditor
     public partial class Form1 : Form
     {
 
-        private int numOfCells;
+        private int numOfLines;
 
         public Form1()
         {
+            try
+            {
+                numOfLines = Convert.ToInt32(Interaction.InputBox("Pocet ctvercu: "));
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine(e);
+            }
             InitializeComponent();
         }
 
         private void canvasPaint(object sender, PaintEventArgs e)
         {
-            int w = pictureBox1.Size.Width;
-            int h = pictureBox1.Size.Height;
-            int cellSize = 50; //64x64 square
             Graphics g = e.Graphics;
-            Pen p = new Pen(Color.Black);
-            numOfCells = 15;
+            Pen myP = new Pen(Color.Black);
+            float x = 0f;
+            float y = 0f;
+            try
+            {
+                float xPlocha = (pictureBox1.Width / numOfLines) - myP.Width;
+                float yPlocha = (pictureBox1.Height / numOfLines) - myP.Width;
+        
+                //vertikalne 
+                for (int i = 0; i < numOfLines + 1; i++)
+                {
+                    g.DrawLine(myP, x, y, x, yPlocha * numOfLines);
+                    x += xPlocha;
+                }
+                //horizontalne
+                x = 0f;
+                for (int i = 0; i < numOfLines + 1; i++)
+                {
+                    g.DrawLine(myP, x, y, xPlocha * numOfLines, y);
+                    y += xPlocha;
+                }
 
-            for (int y = 0; y < numOfCells; ++y)
-            {
-                g.DrawLine(p, 0, y * cellSize, numOfCells * cellSize, y * cellSize);
             }
-            for (int x = 0; x < numOfCells; ++x)
+            catch (DivideByZeroException ex)
             {
-                g.DrawLine(p, x * cellSize, 0, x * cellSize, numOfCells * cellSize);
+                Console.WriteLine(ex);
+                Application.Exit();
             }
         }
 
         private void sizeChangeBtn_Click(object sender, EventArgs e)
         {
-            numOfCells = Convert.ToInt32(Interaction.InputBox("Pocet ctvercu: "));
+            numOfLines = Convert.ToInt32(Interaction.InputBox("Pocet ctvercu: "));
         }
     }
 }
