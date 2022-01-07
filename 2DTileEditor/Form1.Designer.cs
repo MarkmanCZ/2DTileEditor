@@ -91,6 +91,7 @@ namespace _2DTileEditor
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(180, 22);
             this.importButton.Text = "Importovat";
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // settingsMenu
             // 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,8 +19,9 @@ namespace _2DTileEditor
         private PictureBox pictureBox2;
         private int selectedImage = 1;
 
-        private Image grass = Image.FromFile("grass20.png");
-        private Image road = Image.FromFile("road.png");
+        private Image grass = Image.FromFile("Sources/grass20.png");
+        private Image road = Image.FromFile("Sources/road.png");
+        private string filePath;
 
         public Form1()
         {
@@ -82,7 +84,6 @@ namespace _2DTileEditor
                         }
                     }
                 }
-
             }
         }
 
@@ -180,7 +181,71 @@ namespace _2DTileEditor
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            List<string> list = new List<string>();
+
+            for(int i = 0; i < grid.GetLength(0); i++)
+            {
+                string line = "";
+                for(int j = 0; j < grid.GetLength(1); j++)
+                {
+                    line += grid[i, j];
+                }
+                list.Add(line);
+            }
+
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {                    
+                    myStream.Close();
+                    File.WriteAllLines(saveFileDialog1.FileName, list);
+                }
+            }
+        }
+
+
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                }
+            }
             
+            MessageBox.Show("Cesta k souboru: " + filePath);
+            try
+            {
+                List<string> list = File.ReadAllLines(filePath).ToList();
+                pocetCtvercu = list.Count;
+                grid = new int[pocetCtvercu, pocetCtvercu];
+                for (int i = 0; i < pocetCtvercu; i++)
+                {
+                    for (int j = 0; j < pocetCtvercu; j++)
+                    {
+                        grid[i, j] = int.Parse(list[i][j].ToString());
+                    }
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine(ex);
+            }                     
+
+            pictureBox1.Refresh();
         }
     }
 }
