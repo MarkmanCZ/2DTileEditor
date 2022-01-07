@@ -82,13 +82,14 @@ namespace _2DTileEditor
             // saveButton
             // 
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(133, 22);
+            this.saveButton.Size = new System.Drawing.Size(180, 22);
             this.saveButton.Text = "Uložit";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // importButton
             // 
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(133, 22);
+            this.importButton.Size = new System.Drawing.Size(180, 22);
             this.importButton.Text = "Importovat";
             // 
             // settingsMenu
