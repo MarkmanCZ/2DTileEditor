@@ -23,8 +23,12 @@ namespace _2DTileEditor
         private Image road = Image.FromFile("Sources/road.png");
         private string filePath;
 
+        private Errors ers; 
+
         public Form1()
         {
+            //make code so if on messagebox ok btn cliced app will close
+            ers = new Errors();
             try
             {
                 pocetCtvercu = int.Parse(Interaction.InputBox("Pocet ctvercu a * a: "));
@@ -33,6 +37,7 @@ namespace _2DTileEditor
             catch (FormatException e)
             {
                 Console.WriteLine(e);
+                ers.genrateBox("Zadej číslo...", this);
             }
 
             InitializeComponent();
@@ -97,6 +102,7 @@ namespace _2DTileEditor
             catch (FormatException ex)
             {
                 Console.WriteLine(ex);
+                ers.genrateBox("Zadej číslo...", this);
             }
             Refresh();
         }
@@ -243,6 +249,7 @@ namespace _2DTileEditor
             catch (ArgumentNullException ex)
             {
                 Console.WriteLine(ex);
+                ers.genrateBox("Zadej platnou cestu k souboru...", this);
             }                     
 
             pictureBox1.Refresh();
