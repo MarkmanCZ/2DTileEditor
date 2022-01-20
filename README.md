@@ -7,8 +7,5 @@
 </head>
   <body>
     <h1>2DTileEditor</h1>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        afa
-      </nav>
   </body>
 </html>
